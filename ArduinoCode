@@ -1,10 +1,3 @@
-/*
- * Created by ArduinoGetStarted.com
- *
- * This example code is in the public domain
- *
- * Tutorial page: https://arduinogetstarted.com/tutorials/arduino-mysql
- */
 
 #include <SPI.h>
 #include <Ethernet.h>
@@ -13,8 +6,6 @@
 const int MPU_ADDR = 0x68; // I2C address of the MPU-6050. If AD0 pin is set to HIGH, the I2C address will be 0x69.
 
 int16_t accelerometer_x, accelerometer_y, accelerometer_z; // variables for accelerometer raw data
-int16_t gyro_x, gyro_y, gyro_z; // variables for gyro raw data
-int16_t temperature; // variables for temperature data
 
 char tmp_str[7]; // temporary variable used in convert function
 
@@ -24,15 +15,15 @@ char* convert_int16_to_str(int16_t i) { // converts int16 to string. Moreover, r
 }
 
 // replace the MAC address below by the MAC address printed on a sticker on the Arduino Shield 2
-byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED};
+byte mac[] = {0xA8, 0x61, 0x0A, 0xAE, 0x94, 0xC9};
 
 EthernetClient client;
 
 int HTTP_PORT = 80;
 String HTTP_METHOD = "GET";
-char HOST_NAME[] = "192.168.0.26"; // change to your PC's IP address
-String PATH_NAME = "/insert_temp.php";
-String queryString = "?temperature=29.1";
+char HOST_NAME[] = "192.168.0.113"; // change to your PC's IP address
+String PATH_NAME = "/insert_acc.php";//change to the name of your php file
+
 
 void setup()
 {
@@ -53,9 +44,12 @@ void setup()
         Serial.println("Connected to server");
         // make a HTTP request:
         // send HTTP header
-        client.println(HTTP_METHOD + " " + PATH_NAME + queryString + " HTTP/1.1");
-        client.println("Host: " + String(HOST_NAME));
-        client.println("Connection: close");
+        //like http://192.168.0.113/insert_acc.php?acc_x=100&acc_y=100&acc_z=100
+
+        client.println(HTTP_METHOD + " " + PATH_NAME + "?acc_x=100&acc_y=100&acc_z=100"+" HTTP/1.1");//testing
+        
+        client.println(HTTP_METHOD + " " + PATH_NAME + "?acc_x=" + String(accelerometer_x) + "&acc_y=" + String(accelerometer_y) + "&acc_z=" + String(accelerometer_z));
+        client.println(String(accelerometer_x));//! not sure if this is the right way to insert int var in a string query
         client.println(); // end HTTP header
 
         while (client.connected())
@@ -98,20 +92,12 @@ void loop()
   accelerometer_x = Wire.read()<<8 | Wire.read(); // reading registers: 0x3B (ACCEL_XOUT_H) and 0x3C (ACCEL_XOUT_L)
   accelerometer_y = Wire.read()<<8 | Wire.read(); // reading registers: 0x3D (ACCEL_YOUT_H) and 0x3E (ACCEL_YOUT_L)
   accelerometer_z = Wire.read()<<8 | Wire.read(); // reading registers: 0x3F (ACCEL_ZOUT_H) and 0x40 (ACCEL_ZOUT_L)
-  temperature = Wire.read()<<8 | Wire.read(); // reading registers: 0x41 (TEMP_OUT_H) and 0x42 (TEMP_OUT_L)
-  gyro_x = Wire.read()<<8 | Wire.read(); // reading registers: 0x43 (GYRO_XOUT_H) and 0x44 (GYRO_XOUT_L)
-  gyro_y = Wire.read()<<8 | Wire.read(); // reading registers: 0x45 (GYRO_YOUT_H) and 0x46 (GYRO_YOUT_L)
-  gyro_z = Wire.read()<<8 | Wire.read(); // reading registers: 0x47 (GYRO_ZOUT_H) and 0x48 (GYRO_ZOUT_L)
+
   
   // print out data
   Serial.print("aX = "); Serial.print(convert_int16_to_str(accelerometer_x));
   Serial.print(" | aY = "); Serial.print(convert_int16_to_str(accelerometer_y));
   Serial.print(" | aZ = "); Serial.print(convert_int16_to_str(accelerometer_z));
-  // the following equation was taken from the documentation [MPU-6000/MPU-6050 Register Map and Description, p.30]
-  Serial.print(" | tmp = "); Serial.print(temperature/340.00+36.53);
-  Serial.print(" | gX = "); Serial.print(convert_int16_to_str(gyro_x));
-  Serial.print(" | gY = "); Serial.print(convert_int16_to_str(gyro_y));
-  Serial.print(" | gZ = "); Serial.print(convert_int16_to_str(gyro_z));
   Serial.println();
   
   // delay
