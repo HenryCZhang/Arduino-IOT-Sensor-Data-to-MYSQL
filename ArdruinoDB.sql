@@ -1,8 +1,8 @@
-CREATE USER 'Arduino'@'localhost' IDENTIFIED BY 'ArduinoGetStarted.com';
-GRANT ALL PRIVILEGES ON *.* TO 'Arduino'@'localhost' WITH GRANT OPTION;
-FLUSH PRIVILEGES;
+cd C:\xampp\mysql\bin
 
-CREATE DATABASE db_arduino CHARACTER SET = 'utf8' COLLATE = 'utf8_general_ci';
+mysql.exe -u root -p
+
+password
 
 USE db_arduino;
 
