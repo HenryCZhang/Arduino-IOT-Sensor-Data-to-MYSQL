@@ -13,3 +13,8 @@ CREATE TABLE tbl_arduinoACC (
     acc_z INT DEFAULT 0.00,
 	PRIMARY KEY (acc_id)
 );
+
+
+SELECT * from tbl_ardruinoACC;
+
+DELETE FROM  tbl_ardruinoACC;
