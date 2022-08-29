@@ -6,6 +6,8 @@ password
 
 USE db_arduino;
 
+
+//not necessary to create a new table every time 
 CREATE TABLE tbl_arduinoACC (
 	acc_id    INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	acc_x INT DEFAULT 0.00,
