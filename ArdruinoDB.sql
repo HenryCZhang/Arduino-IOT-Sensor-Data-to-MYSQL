@@ -15,6 +15,6 @@ CREATE TABLE tbl_arduinoACC (
 );
 
 
-SELECT * from tbl_ardruinoACC;
+SELECT * from tbl_arduinoACC;
 
-DELETE FROM  tbl_ardruinoACC;
+DELETE FROM  tbl_arduinoACC;
