@@ -1,0 +1,35 @@
+To access the databse, us the following command in your Command Prompt
+
+1. navigate to this directory
+
+cd C:\xampp\mysql\bin
+
+2. run mysql.exe
+
+mysql.exe -u root -p
+
+3.enter your password
+
+your password
+
+4. select a database that you want to access
+
+USE db_arduino;
+
+4.1 //create a new table (not necessary every time)
+
+CREATE TABLE tbl_arduinoACC (
+	acc_id    INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	acc_x INT DEFAULT 0.00,
+    acc_y INT DEFAULT 0.00,
+    acc_z INT DEFAULT 0.00,
+	PRIMARY KEY (acc_id)
+);
+
+5. select a table to read data from 
+
+SELECT * from tbl_arduinoACC;
+
+6. delete all data from that table
+
+DELETE FROM  tbl_arduinoACC;
