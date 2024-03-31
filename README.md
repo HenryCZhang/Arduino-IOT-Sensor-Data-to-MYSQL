@@ -66,3 +66,33 @@ This project uses Arduino board to collect sensor data and store it on the MySQL
 ### For more specific steps, please follow the tutorial in the link provided below 
 https://arduinogetstarted.com/tutorials/arduino-mysql 
 
+### Project Contribution
+
+1. **Arduino Board Setup and Data Collection:** 
+   - Designed and configured Arduino board to accurately collect sensor data for structural monitoring.
+   - Implemented protocols for data acquisition and transmission to ensure data integrity.
+
+2. **MySQL Database Management:**
+   - Developed and maintained MySQL database structure to efficiently store sensor data.
+   - Ensured optimal database performance and integrity through regular maintenance and optimization.
+
+3. **PHP Script Development:**
+   - Designed and implemented PHP scripts to handle HTTP requests from Arduino board.
+   - Processed incoming data, interacted with the MySQL database, and generated appropriate responses.
+
+4. **Integration and Communication:**
+   - Established seamless communication between Arduino board, web server, and MySQL database.
+   - Implemented protocols for secure data transmission and maintained data consistency across platforms.
+
+5. **Collaboration and BIM Model Integration:**
+   - Collaborated with team members to model bridge beam in BIM software.
+   - Synchronized digital twin with real-time sensor data to visualize structural behavior.
+
+6. **Risk Assessment and Real-time Monitoring:**
+   - Conducted risk assessments based on data transmitted and stored in MySQL database.
+   - Enabled real-time remote monitoring of structure behavior through BIM model visualization.
+
+7. **Testing and Quality Assurance:**
+   - Conducted thorough testing and debugging of the entire system to ensure reliability and functionality.
+   - Implemented quality assurance measures to identify and address any potential issues or vulnerabilities.
+
