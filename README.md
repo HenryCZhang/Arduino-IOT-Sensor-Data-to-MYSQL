@@ -1,11 +1,17 @@
 # Arduino-IOT-Sensor-Data-to-MYSQL
 ## About The Project
 
+Arduino-IoT Sensor Data Integration: Developed a system to collect sensor data using Arduino boards and store it in a MySQL database as part of a BIM-IoT integration for structural monitoring. This solution allowed real-time connection between physical models and their digital twins, enabling remote monitoring and visualization of structural behavior in BIM environments.
+
+Arduino-物联网传感器数据集成：开发了一个使用Arduino板收集传感器数据并将其存储在MySQL数据库中的系统，作为BIM-物联网集成的一部分，用于结构监测。该解决方案实现了物理模型与其数字孪生模型的实时连接，支持远程监测和结构行为在BIM环境中的可视化。
+
 <div align="center">
   <img alt="Demo" src="./iot_img/BIM.png" />
 </div>
 
 This project uses Arduino board to collect sensor data and store it on the MySQL database. This is a part of the <i><b>Structure Monitoring with BIM and IoT: The Case Study of a Bridge Beam Model</b></i> methodology. The goal is to establish a connection between an IoT system and a BIM model for monitoring the deflection of a bridge beam at the centreline using a schematic scale model reproduced in the laboratory and modelled in BIM. The developed system allows the real-time connection between the real model and its digital twin through the use of a relational database management system (RDBMS), to which the data detected by the sensor are transmitted, allowing the risk assessment of the real structure. This solution gives the possibility to remotely monitor, in real time, the behaviour of the structure visualized in the BIM model. 
+
+该项目通过利用前沿技术，专注于物联网、边缘计算和实时分析，推动结构健康监测方法的发展，以提高基础设施的安全性和可靠性。
 
 ## Getting Started
 
